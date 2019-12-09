@@ -1,0 +1,9 @@
+
+
+                        Test Program TEST_SUBPIX
+
+Program to test RENDlib sub-pixel addressing.
+
+This program has no private command line options, but will obey many of
+the standard RENDlib test program command line options.  See the
+REND_TEST documentation file for details.

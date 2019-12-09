@@ -1,0 +1,49 @@
+
+
+                        Test Program TEST_SHADE
+
+TEST_SHADE [<options>]
+
+Test RENDlib shading.  All of the standard RENDlib test program command
+line options are legal, although they may not all be obeyed.  In
+addition, TEST_SHADE can take the following private command line
+options:
+
+  -EMIS weight
+  -DIFF weight
+  -SPEC weight
+
+       Set the weighting factor for the emissive, diffuse, and specular
+       surface properties, respectively.  If the weighting factor is
+       exactly zero, then that surface property is shut off.
+
+  -SPEXP exp
+
+       Set the specular exponent.  The default is 15.
+
+  -OPAC front side
+
+       Set object opacity fraction.  Opacity of 0 is totally
+       transparent, and 1 is totally opaque.  The FRONT value applies
+       when the object surface is directly facing the eye point.  The
+       SIDE value applies when it is facing at right angle to the eye
+       point.  intermediate angles are interpolated appropriately.  The
+       default is -OPAC 1 1 (everything totally opaque).
+
+       NOTE:  The object polygons are not sorted, so transparent
+       objects will not be drawn correctly with Z buffering.  The -OPAC
+       option is intended to test the ray tracer variable
+       transparency.
+
+  -ROD
+
+       Draw a rod piercing the sphere.  The rod will always be drawn
+       using Z buffering, even if the -RAY command line option is
+       specified.  This is intended to test Z correspondance bewteen
+       the ray tracer and the Z buffer renderer.
+
+  -RAY_ROD
+
+       Draw the rod using ray tracing.  This option implies -ROD.  The
+       default is to draw the rod using Z buffering, even when -RAY is
+       specified.

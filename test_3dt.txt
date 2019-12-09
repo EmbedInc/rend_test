@@ -1,0 +1,122 @@
+
+
+                            Program TEST_3DT
+
+test_3dt <options>
+
+Test program to draw a 3D object.  This program is not intended for
+general use.  You may be asked to run it in an effort to diagnose a
+problem.
+
+This program tumbles an object composed of six 3D triangles.  The
+triangles form three "arrows", indicating the positive direction of the
+major axes.  Depending on options, a single partially transparent
+triangle may also appear.
+
+
+
+COMMAND LINE OPTIONS
+
+  This program obeys all the standard RENDlib test program command line
+  options in addition to the following:
+
+    -NOZ
+
+         Turn off Z buffer compares when drawing objects.
+
+    -ALPHA
+
+         Force on the alpha buffered triangle.  By default, this
+         triangle is displayed whenever it is not the cause of forcing
+         software emulation mode.
+
+    -NOALPHA
+
+         Force off the alpha buffered triangle.  By default, this
+         triangle is displayed whenever it is not the cause of forcing
+         software emulation mode.
+
+    -QUAD
+
+         Quadratically interpolate RGB for the solid objects.
+
+    -PANES
+
+         Break up the current window to create separate panes for the
+         graphics.  This will use the same RENDlib logical device names
+         as FOTO.
+
+    -LINE
+
+         Draw only the edges of the trianlges using the LINE_3D
+         primitive.  The default is to draw the triangles solid using
+         the TRI_3D primitive.  This will also cause the text, if
+         enabled, to be drawn with vectors instead of polygons.
+
+    -TEXT
+
+         Draw some text in the 3DPL space.  This is for testing the
+         3DPL space primitives.
+
+    -DEV2 <RENDlib device string>
+    -DEV3 <RENDlib device string>
+
+         Specify explicit RENDlib device strings for the two optional
+         panes.  Either of these options implies -PANES.  The default
+         device names are FOTO_SCENE_DIAGRAM and FOTO_MENU.
+
+
+ACTIVE KEYS:
+
+    Four arrow keys:
+
+         Rotate the view space about its center.
+
+    Four arrow keys shifted:
+
+         Translate object withing view space.  Translation is clipped
+         to near view space limits.
+
+    Up and down arrow keys with control:
+
+         Translate object forwards and backwards within view space.  As
+         with other translations, the total range is clipped.
+
+    First function key
+
+         Reset to original view and conditions.
+
+    Second function key
+
+         Toggle background clears on/off.  Background clears wake up or
+         reset to on.  When background clears are off, then the objects
+         are drawn incrementally into the existing image and Z buffer
+         (when enabled).  When background clears are on, then the
+         objects are always drawn into a cleared background.
+
+    Third function key
+
+         Toggle updates on/off.  The initial and reset condition is
+         updates are on.  When updates are off, nothing is drawn,
+         although incremental transforms and modes are still
+         accumulated.  When updates are turned on, the objects are
+         redrawn in their new positions.
+
+    Fourth function key
+
+         Toggle double buffer mode, if possible.  Double buffering is
+         enabled by default, if available.
+
+    Mouse button 1 (usually left button)
+
+         Pan the camera.  Drags point on virtual sphere centered on the
+         eye point and extending to Z=0.
+
+    Shift mouse button 1
+
+         Dolly camera in/out.
+
+    Mouse button 3 (usually right button)
+
+         Rotate object.  Drags point on large virtual sphere centered
+         at the origin.

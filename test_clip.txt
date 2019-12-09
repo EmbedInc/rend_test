@@ -1,0 +1,10 @@
+
+
+                         Test Program TEST_CLIP
+
+Program to test RENDlib clipping.  This program is really a template
+that is generally modified to perform the specific test of interest.
+
+This program has no private command line options, but will obey many of
+the standard RENDlib test program command line options.  See the
+REND_TEST documentation file for details.

@@ -1,0 +1,258 @@
+
+
+            Common RENDlib Test Program Command Line Options
+                            24 October 2004
+
+Many of the test programs that exercise RENDlib permit a common set of
+command line options.  Each program may also have additional command
+line options.  The common RENDlib test program command line options are
+documented here.  While all command line options are legal for programs
+that claim to use the RENDlib test program command line options, many
+programs ignore some of the options.
+
+RENDlib test programs are not intended for general use by customers.
+Some are included in software releases because they may help us
+diagnose problems at your site.  They may also help more advanced users
+verify the installation of new hardware, software, etc.
+
+WARNING: Although some aspects of some of the RENDlib test programs are
+  documented in a general software release, all such programs are
+  unsupported.  Not all features are documented or explained fully.
+  Features may change incompatibly without warning at any time.
+
+The command line options are:
+
+  -DEV <RENDlib device specifier string>
+
+       See the RENDLIB_DEV documentation file for more info.
+
+  -IMG
+
+       Write the result of the drawing to an image file.  Currently,
+       this forces software emulation.  The generic image file name
+       will be the program name.
+
+  -INAME <image file name>
+
+       Same as -IMG, above, except that the image file name is given
+       explicitly.
+
+  -SW
+
+       Forces software emulation regardless of whether it is really
+       necessary for correct drawing.  The default is to only force
+       software emulation when necessary.
+
+  -SIZE ix iy
+
+       Declare desired image size in pixels.  The requested size may
+       not be possible if also drawing to hardware.  The default size
+       is the size of the hardware draw area in use, if any.  Otherwise
+       the default is 512 x 410.
+
+  -LIGHT_EXACT
+
+       Require that the RENDlib lighting model be followed exactly.
+       The default is to allow small errors if speedups are available
+       on the current device.
+
+  -BIT_VIS n
+
+       Request a minimum effective visible color resolution in
+       bits/pixel.  The default varies from program to program.  For
+       most programs, the default is either the maximum of mimimum
+       color resolution available.
+
+  -ASPECT width height
+
+       Specify the whole image aspect ratio.  This may have no effect
+       on some output devices.  The default is to assume square
+       pixels.
+
+  -RAY
+
+       Request ray tracing.
+
+  -CIRRES n
+  -CIRRES1 n
+  -CIRRES2 n
+
+       Set the number of line segments to be used to approximate a
+       circle.  CIRRES 1 and 2 are used for major and minor angle
+       parameters, such as would exist when drawing a torus.  -CIRRES
+       sets both these to the same value.  This value must be an
+       integer no less than 4.  The default is 20.
+
+  -WIRE
+
+       Request wire frame rendering.
+
+  -THICK t
+
+       Set the wire frame vector thickness.  The thickness parameter is
+       in units of pixels for an image which has 512 as its minimum
+       dimension.  Therefore, if T is set to 1.5, then vectors will be
+       3 pixels wide on a 1280 x 1024 image.  The thickness does not
+       actually kick in unless the resulting thickness is at least two
+       pixels.  The default is T = 1.0.
+
+  -FACET
+
+       Request facet shading.  Shading normals come directly from
+       geometric normals.  The default is linear (Gouraud) shading.
+
+  -FLAT
+
+       Request flat shading.  Color value is constant accross each
+       polygon.  The default is linear (Gouraud) shading.
+
+  -NPERSP
+
+       Turn perspective OFF.  The default is perspective is ON.
+
+  -SUBPIXV
+
+       Request that vectors be drawn using subpixel addressing.
+
+  -NSUBPIXP
+
+       Request that polygons be drawn without subpixel addressing.
+
+  -UDPATE <update mode>
+
+       Indicate the desired display update mode.  The update mode name
+       must be one of the following:
+
+         LIVE  -  The display will be updated often enough for drawing
+              to appear "live".
+
+         BUFFALL  -  RENDlib may buffer updates to the display if this
+              increase overall speed.
+
+  -COM <comment string>
+
+       Define a comment string.  It is up to each program what to do
+       with this string.  Programs that use this feature will generally
+       write the comment string to the image.  All the comments are
+       also normally written as comment lines to image files that
+       support this feature.  Any number of -COM command line arguments
+       may be given.  Each -COM adds one line to the bottom of the
+       comment lines.
+
+  -XF2D xbx xby  ybx yby  ofsx ofsy
+
+       Set initial 2D transform.
+
+  -ROTX a
+  -ROTY a
+  -ROTZ a
+
+       Perform incremental rotation about the selected axis.  The angle
+       values are in units of half circles.  A value of 0.5 therefore
+       results in a PI/2 rotation.
+
+       The incremental transform specified by this option is
+       post-multiplied by the 3D transform accumulated so far.  The
+       result becomes the new 3D transform.  The 3D transform is
+       initialized to identity before any command line options are
+       processed.
+
+  -OFS3D dx dy dz
+
+       Offset the 3D model space origin.
+
+       The incremental transform specified by this option is
+       post-multiplied by the 3D transform accumulated so far.  The
+       result becomes the new 3D transform.  The 3D transform is
+       initialized to identity before any command line options are
+       processed.
+
+  -SCALE3D m
+
+       Uniformly scale the 3D model space.
+
+       The incremental transform specified by this option is
+       post-multiplied by the 3D transform accumulated so far.  The
+       result becomes the new 3D transform.  The 3D transform is
+       initialized to identity before any command line options are
+       processed.
+
+  -XF3D  XBx XBy XBz  YBx YBy YBz  ZBx ZBy ZBz  DIx DIy DIz
+
+       Define a complete relative 3D transformation.
+
+       The incremental transform specified by this option is
+       post-multiplied by the 3D transform accumulated so far.  The
+       result becomes the new 3D transform.  The 3D transform is
+       initialized to identity before any command line options are
+       processed.
+
+  -EYEDIS e
+
+       Set eye distance perspective factor.  Default is the "normal"
+       value of 3.3333.  Smaller values result in more extreme
+       perspective.
+
+  -AA n
+
+       Set anti-aliasing subpixel factor.  Value of 1 disables
+       anti-aliasing, which is also the default.  WARNING: Enabling
+       anti-aliasing can seriously confuse programs not explicitly
+       intended to handle it.
+
+  -TMAP <name>
+
+       Explicitly specify the texture map image file name.  The default
+       is images/tmap/default withing the software installation
+       directory.
+
+  -TMAP_EXACT
+
+       Require that the RENDlib texture mapping model be followed
+       exactly.  By default, small errors are allowed if this increases
+       performance on the current device.
+
+  -TFILT <subcommand>
+
+       Control the various texture mapping filtering switches.  The
+       subcommands are:
+
+         MAP  -  Filter between adjacent size maps.
+
+         NMAP  -  Disable filtering between maps.
+
+         PIX  -  Filter between nearest pixels within each texture
+              map.  Bi-linear interpolation is used.
+
+         NPIX  -  Disable filtering between pixels in the same map.
+
+       The default is MAP and NPIX.  Note that no interpolation may be
+       performed, or not performed as described unless -TMAP_EXACT is
+       specified.
+
+  -MAXMAP n
+  -MINMAP n
+
+       Set the min and max filtered texture map sizes to use.  The N
+       value is the Log2 of the number of pixels in each dimension.
+       The default is 0 to 13, meaning maps from 1 x 1 to 8192 x 8192
+       pixels in size may be used.  The values specified will be
+       clipped to the available sizes in whatever texture map is used.
+
+  -OLDSPHERE
+
+       Set sphere drawing compatible with software prior to 29 January
+       1997.  A sphere primitive is now built directly into RENDlib,
+       and can be ray traced as one whole sphere.  Previously, the
+       REND_TEST_SPHERE routine tesselated a sphere itself.  Such
+       spheres were ray traced as a collection of triangles.  The
+       tesselation method also differs between the old REND_TEST_SPHERE
+       routine and the new RENDlib sphere primitive.
+
+       The reason for this command line option is for compatibility
+       with old benchmark results.  Any benchmark test that draws
+       spheres will do different work between the old and new
+       versions.  The -OLDSPHERE command line option allows these
+       benchmark tests to be run on software released on or after 29
+       January 1997, while still providing meaningful comparisons with
+       old benchmark results.

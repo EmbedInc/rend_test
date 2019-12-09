@@ -1,0 +1,85 @@
+
+
+                           Program TEST_TMAP2
+
+Test program to exercise RENDlib texture mapping.  This program is not
+intended for general use.  You may be asked to run it in an effort to
+diagnose a problem.
+
+This program draws a texture mapped cylinder.  Many texture mapping
+intricacies can be excercised by this program thru clever use of the
+command line options.  Most of the standard RENDlib test program
+command line options are meaningful.  See the REND_TEST documentation
+file for details.  TEST_TMAP2 also takes the following private command
+line options:
+
+  -BLEND_LEV n
+
+       Set the number of discrete levels for blending between the two
+       texture maps of the most appropriate size.  The default is 256
+       quantization levels, which is essentially continuous.
+
+  -OBJ object
+
+       Specify the object to draw.  Choices are:
+
+       CYL
+
+            Cylinder.  The cylinder is centered at the origin, is
+            aligned with the Y axis, and has a radius of 0.5.  Its
+            length is adjusted to be 1/2 its circumference.  The
+            texture is mapped twice around the cylinder, and once along
+            its axis.  This is the default.
+
+       CUBE
+
+            Cube centered around the origin.  It is axis-aligned
+            extending to +-0.6 in all dimensions.  The texture is
+            mapped once to each face.  Each cube face is broken into
+            CIRRES1 segments along each edge.  This means that
+            CIRRES1**2 quads are drawn for each cube face.  See the
+            REND_TEST documentation file for more info about CIRRES.
+            The default is CIRRES1 1, meaning each cube face is drawn
+            as one complete quad.
+
+  -STAT
+
+       Write information to the image and to the image file comment
+       lines about parameters that might be relevant.  The default is
+       to not write this information.
+
+  -NSTAT
+
+       Don't write additional information to the image and image file
+       comment lines.  This is the default.
+
+  -UVQUAD
+
+       Force the U and V texture map indicies to be quadratically
+       interpolated accross each polygon.  This is the default.
+
+  -UVLIN
+
+       Force the U and V texture map indicies to be linearly
+       interpolated accross each polygon.  The default is to
+       interpolate them quadratically.
+
+  -REPT n
+
+       Set the number of texture map replications in each dimension
+       from the default (N = 1).  For example, the texture is mapped to
+       each cube face once by default.  When N = 2, the texture is
+       mapped in a 2 x 2 tiled pattern to each cube face.
+
+  -ZRANGE znear zfar
+
+       Set the Z buffer range limits in the view space.  These will be
+       clipped to not include the eye point, if necessary.  The default
+       Z range extends from 1.5 to -1.5.  In the view space, the eye is
+       on the +Z axis looking at the origin.  +X is to the right and +Y
+       is up.  Z=0 is the image plane where perspective will have no
+       effect.  Objects in front of it (+Z) values will be enlarged,
+       and objects behind it (-Z) values will be shrunk due to
+       perspective.  The +-1 image plane square is centered and
+       maximized in the image area.  The distance from the eye point to
+       the Z=0 image plane is the EYEDIS perspective value.

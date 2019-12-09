@@ -1,0 +1,52 @@
+
+
+                          Program TEST_CREATE
+
+Test program to temporarily create an X window.  This is not intended
+for general use.  Command line options are:
+
+  -WIND <window descriptor string>
+
+       Specifies the parent of the window to create.
+
+  -VIS <visual name>
+
+       Specifies the X-lib visual (pixel format) for the new window.
+       Choices are:
+
+         FGRAY  -  Fixed gray scale.
+         GRAY  -  Configurable gray scale.
+         FPCOLOR  -  Fixed psuedo color.
+         PCOLOR  -  Configurable psuedo color.
+         FTCOLOR  -  Fixed true color.
+         TCOLOR  -  Configurable true color.
+
+       The default visual is the same visual as the parent window.
+
+  -PLANES n
+
+       Specifies the number of bits/pixel for the new window.  The
+       default is 8 for all visuals except true color.  For true color
+       visuals, the default is 24.
+
+  -POS x y
+
+       Specifies the top left corner of the new window with respect to
+       its parent.  The default is 0,0.
+
+  -SIZE x y
+
+       Specifies the size of the new window.  The default is the same
+       size as the parent window.
+
+  -INSERT
+
+       Specifies to insert the newly created window bewteen the
+       indicated parent window and all the original children of the
+       parent window.
+
+  -NOWM
+
+       Causes the OVERRIDE REDIRECT flag to be set in the new window.
+       This prevents the window manager from interfering with the new
+       window.
