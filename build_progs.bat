@@ -15,6 +15,7 @@ call src_prog %srcdir% test_aa %1
 call src_prog %srcdir% test_alpha %1
 call src_prog %srcdir% test_clip %1
 call src_prog %srcdir% test_quad %1
+call src_prog %srcdir% test_ray %1
 call src_prog %srcdir% test_shade %1
 call src_prog %srcdir% test_subpix %1
 call src_prog %srcdir% test_text %1
