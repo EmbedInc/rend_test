@@ -195,6 +195,7 @@ redraw:
     rend_set.iterp_flat^ (rend_iterp_z_k, -1.0);
     end;
   rend_prim.clear_cwind^;              {draw background}
+  rend_prim.flush_all^;                {force all cached drawing to the device}
 {
 *   Set up for 3D drawing.
 }
