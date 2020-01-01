@@ -14,7 +14,7 @@ call src_prog %srcdir% test_3dt
 call src_prog %srcdir% test_aa
 call src_prog %srcdir% test_alpha
 call src_prog %srcdir% test_clip
-call src_prog %srcdir% test_keys
+call src_prog %srcdir% test_events
 call src_prog %srcdir% test_quad
 call src_prog %srcdir% test_ray
 call src_prog %srcdir% test_shade
