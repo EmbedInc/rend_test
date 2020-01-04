@@ -164,7 +164,6 @@ next_event:
 
 rend_ev_none_k: begin
       writeln ('NONE');
-      goto next_event;
       end;
 
 rend_ev_close_k: begin
@@ -197,22 +196,34 @@ rend_ev_key_k: begin
         else write ('up');
       write (' at ', ev.key.x, ',', ev.key.y, ', ID ');
       show_key (ev.key.key_p^);
-      goto next_event;
+      end;
+
+rend_ev_scrollv_k: begin
+      write ('SCROLLV ');
+      if ev.scrollv.n >= 0
+        then begin
+          write (ev.scrollv.n);
+          if ev.scrollv.n > 0 then begin
+            write (' up');
+            end;
+          end
+        else begin
+          write (-ev.scrollv.n, ' down');
+          end
+        ;
+      writeln;
       end;
 
 rend_ev_pnt_enter_k: begin
       writeln ('PNT ENTER at ', ev.pnt_enter.x, ',', ev.pnt_enter.y);
-      goto next_event;
       end;
 
 rend_ev_pnt_exit_k: begin
       writeln ('PNT EXIT at ', ev.pnt_exit.x, ',', ev.pnt_exit.y);
-      goto next_event;
       end;
 
 rend_ev_pnt_move_k: begin
       writeln ('PNT MOVE at ', ev.pnt_move.x, ',', ev.pnt_move.y);
-      goto next_event;
       end;
 
 rend_ev_close_user_k: begin
@@ -223,15 +234,14 @@ rend_ev_close_user_k: begin
 rend_ev_stdin_line_k: begin
       rend_get_stdin_line (s);
       writeln ('STDIN LINE "', s.str:s.len, '"');
-      goto next_event;
       end;
 
 rend_ev_xf3d_k: begin
       writeln ('XF3D');
-      goto next_event;
       end;
 
     end;                               {end of event type cases}
+  goto next_event;                     {back to get the next event}
 
 leave:
   rend_end;
