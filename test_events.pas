@@ -42,6 +42,7 @@ begin
   if key.val_p <> nil then begin       {this key has a string value ?}
     write (' Val "', key.val_p^.str:key.val_p^.len, '"');
     end;
+
   case key.spkey.key of                {special key type ?}
 rend_key_sp_func_k: write (' Func ', key.spkey.detail);
 rend_key_sp_pointer_k: write (' Pointer ', key.spkey.detail);
@@ -49,7 +50,13 @@ rend_key_sp_arrow_left_k: write (' Left arrow');
 rend_key_sp_arrow_right_k: write (' Right arrow');
 rend_key_sp_arrow_up_k: write (' Up arrow');
 rend_key_sp_arrow_down_k: write (' Down arrow');
+rend_key_sp_pageup_k: write (' Page Up');
+rend_key_sp_pagedn_k: write (' Page Down');
+rend_key_sp_del_k: write (' Delete');
+rend_key_sp_home_k: write (' Home');
+rend_key_sp_end_k: write (' End');
       end;                             {end of special key cases}
+
   writeln;
   end;
 {
