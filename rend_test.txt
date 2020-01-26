@@ -1,5 +1,3 @@
-
-
             Common RENDlib Test Program Command Line Options
                             24 October 2004
 

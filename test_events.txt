@@ -1,0 +1,17 @@
+                        Embed program TEST_EVENTS
+                             26 January 2020
+
+test_events [options]
+
+Test program to show the events received by a RENDlib drawing window.
+
+The command line options are:
+
+  -LOG fnam
+
+    Writes the events to the indicated log file.  By default, events are
+    written to standard output
+
+  Many of the standard RENDlib test program command line options are also
+  accepted.  See the REND_TEST documentation file for a description of
+  these command line options.

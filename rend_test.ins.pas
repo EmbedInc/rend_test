@@ -195,7 +195,7 @@ procedure rend_test_cmline (           {process standard command line parms}
 procedure rend_test_cmline_done;       {abort if unused command line tokens exist}
   extern;
 
-function rend_test_cmline_fp (         {get FP value of enxt unused cmd line token}
+function rend_test_cmline_fp (         {get FP value of next unused cmd line token}
   out     stat: sys_err_t)             {completion status code}
   :sys_fp_max_t;                       {returned floating point value}
   val_param; extern;
