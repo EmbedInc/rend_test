@@ -315,7 +315,7 @@ done_opts:                             {done with all the command line options}
     end;
   wline;
 {
-*   Enable events to allow for refreshing the drawing.
+*   Enable events to test them.
 }
   rend_set.event_req_close^ (true);
   rend_set.event_req_pnt^ (true);
@@ -323,6 +323,7 @@ done_opts:                             {done with all the command line options}
   rend_set.event_req_translate^ (true);
   rend_set.event_req_wiped_resize^ (true);
   rend_set.event_req_wiped_rect^ (true);
+  rend_event_req_stdin_line (true);
 {
 *   Do other initialization.
 }
