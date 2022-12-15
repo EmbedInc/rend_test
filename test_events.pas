@@ -318,6 +318,7 @@ done_opts:                             {done with all the command line options}
 *   Enable events to test them.
 }
   rend_set.event_req_close^ (true);
+  rend_set.event_req_scroll^ (true);
   rend_set.event_req_pnt^ (true);
   rend_set.event_req_rotate_on^ (1.0);
   rend_set.event_req_translate^ (true);
